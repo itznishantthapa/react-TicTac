@@ -1,4 +1,4 @@
-// import React from 'react'
+
 import { useState } from 'react'
 
 function Squares({ value, handleClick }) {
@@ -20,25 +20,23 @@ function Board() {
     const onSquareClick = (i) => {
 
         //if value exists, returns; to stop the over-written
-        if(squareValues[i]){
+        if( squareValues[i] || winner){
             return;
         }
 
         const newSquare = squareValues.slice()
         if(isX){
              newSquare[i] = "X"
-            //  setcounter(counter+1)
         }else{
             newSquare[i]='O'
-            // setcounter(counter+1)
         }
         setSquareValue(newSquare)
         setX(!isX)
 
-        const winner=winnerCheck(newSquare)
+        const winnerIs=winnerCheck(newSquare)
 
-        if(winner){
-            setwinner(winner);
+        if(winnerIs){
+            setwinner(winnerIs);
         }
     }
 
